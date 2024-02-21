@@ -1,0 +1,49 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'anime/style.css' %}" />
+  <title> Anime Seek List </title>
+</head>
+<style>
+
+</style>
+<body>
+        <img src="{% static "anime/images/Logo_anime_seek.png" %}" width="120px" height="80px" align="left">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      <div class="top_nav">
+        <ul>
+          <li><a href="{% url "anime:home" user %}"> Home </a></li>
+          <li><a class="active" href="{% url "anime:data" user %}">Animes</a></li>
+          <li><a href="{% url "anime:utilizadores" user %}">Otakus</a></li>
+          <li><a href="{% url "anime:amigos" user %}"> A seguir</a></li>
+          <li><a href="{% url "anime:my_list" user %}">A minha lista</a></li>
+          <div class="top_nav_right">
+            <li><a href="{% url "anime:logoutview" %}">  Logout  </a></li>
+          </div>
+        </ul>
+      </div>
+      <br>
+      {% if anime %}
+          {% for a in anime %}
+            <div class="gallery">
+                    <a href="{% url 'anime:detail' a.id user%}">
+                        <img src="{{a.logo}}">
+                    </a>
+                    <div class="desc">
+                        <div class="title">
+                          <h5>{{a.anime}}</h5>
+                        </div>
+                        <div class="generos">
+                          <p>{{a.generos}}</p>
+                        </div>
+                    </div>
+            </div>
+          {%endfor%}
+        {% else %}
+        <p> Ainda não existem animes na base de dados.</p>
+        {% endif %}
+</body> 
+

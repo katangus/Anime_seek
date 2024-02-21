@@ -1,0 +1,78 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'anime/style.css' %}" />
+  <title> Detail </title>
+</head>
+<style>
+
+</style>
+<body>
+{% if request.user.is_authenticated %}
+    <img src="{% static "anime/images/Logo_anime_seek.png" %}" width="120px" height="80px" align="left">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="top_nav">
+        <ul>
+            <li><a href="{% url "anime:home" user %}"> Home </a></li>
+            <li><a href="{% url "anime:data" user %}">Animes</a></li>
+            <li><a href="{% url "anime:utilizadores" user %}">Otakus</a></li>
+            <li><a href="{% url "anime:amigos" user %}">A seguir</a></li>
+            <li><a href="{% url "anime:my_list" user %}">A minha lista</a></li>
+        <div class="top_nav_right">
+            <li><a href="{% url "anime:detail" anime.id user %}">{{anime.anime}}</a></li>
+            <li><a class="active" href="{% url "anime:todas_reviews" anime.id user %}">Reviews</a></li>
+            <li><a href="{% url "anime:logoutview" %}">  Logout  </a></li>
+        </ul>
+    </div>
+    <div class="leftpane">   
+        <div class="leftpane_upper"> 
+            <h3> {{anime}} </h3>
+            <h4> {{a.generos}} </h4>
+                <img src="{{anime.logo}}" width='250px' >
+
+                <h3> Adicionar Review</h3>
+                <form name="user" action="{% url 'anime:create_review' user anime.id%}" method="post">
+                    {% csrf_token %}
+                        <input type="text" name="review">
+                        <br>
+                        <input type="submit" value = "Submit">
+                </form>        
+        </div>
+    </div>
+
+    <div class="rightpane">
+        {% if review%}
+        {% for r in review %}   
+            <div class="u2">
+                <div class="con2">    
+                        <div class="outline_image">
+                            {% if r.user.otaku.path_image == "" %}
+                                <img src="{% static '/anime/images/default.jpg' %}" class="user_img">
+                            {% else %}
+                                <img src ="/anime/static/media/{{r.user.id}}.jpg" class="user_img">
+                            {% endif %} 
+                        </div>
+
+                        <div class="texto">
+                            <div class="username_style2">
+
+                                <span>   
+                                    <strong>{{r.user.username}}</strong> <small>{{r.pub_data}}</small>
+                                </span> 
+                                <p>{{r.comentario}}</p>  
+                            </div>       
+
+                        </div>
+                </div>  
+            </div>
+        {%endfor%}
+        {%else%}
+            <p> Ainda não existem reviews feitas a este anime. Sê o primeiro :)</p>
+        {%endif%}
+    </div>
+
+{%endif%}
+</body>

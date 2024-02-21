@@ -1,0 +1,74 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'anime/style.css' %}" />
+  <title> Admin </title>
+</head>
+<style>
+
+</style>
+<body>
+{%if request.user.is_superuser%}
+    <img src="{% static "anime/images/Logo_anime_seek.png" %}" width="120px" height="80px" align="left">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="top_nav">
+                    <ul>
+                    <li><a href="{% url "anime:home" user %}">Home</a></li>
+                    <li><a href="{% url "anime:data" user %}">Animes</a></li>
+                    <li><a href="{% url "anime:utilizadores" user%}">Otakus</a></li>
+                    <li><a href="{% url "anime:amigos" user %}">A seguir</a></li>
+                    <li><a href="{% url "anime:my_list" user %}">A minha lista</a></li>
+                    <div class="top_nav_right">
+                        <li><a href="{% url "anime:logoutview" %}">Logout</a></li>
+                    </div>
+                    </ul>
+                </div>
+        <h1 align="center"> Adições à base de dados: </h1>
+        <div class="row">
+            <div class="column1">
+                <p> Adicionar Anime Manualmente: </p>
+                <form name="add_anime" action="{% url 'anime:add_anime' user %}" method="post">
+                    {% csrf_token %}
+                    <p>Nome Anime:</p><input type="text" name="nome">
+                    <p>Nº episódios totais:</p><input type="number" name="episodios">
+                    <p>Géneros:<p><input type="text" name="genero">
+                    <p>Imagem:<p><input type="url" name="logo">
+                    <br>
+                    <br>
+                    <input type="submit" value="Registar">
+                </form>
+            </div>
+            <div class="column2">
+                <p> Adicionar Géneros: </p>
+                <form name="definir_generos" action="{% url 'anime:definir_generos' user %}" method="post">
+                    {% csrf_token %}
+                        <p>Género:</p><input type="text" name="genero">
+                        <br>
+                        <input type="submit" value="Registar">
+                </form>
+            </div>
+            <div class="column3">
+                <p> Importar dados da base de dados <strong>csv</strong></p>
+                <center>
+                <h5>Estrutura da base de dados:</h5>
+                <ul>
+                        <li>Coluna de título denomina-se por <strong>title</strong></li>
+                        <li>Coluna do género denomina-se por <strong>genre</strong></li>
+                        <li>Coluna de nº de episodios denomina-se por <strong>episodes</strong></li>
+                        <li>Coluna com link para imagem de anime denomina-se por <strong>img_ur</strong></li>
+                </ul>
+                <center>
+                <form name="import_csv" action="{% url 'anime:import_data' user%}" method="post">
+                    {% csrf_token %}
+                    <p>Ficheiro:</p><input type="text" name="file">
+                        <br>
+                        <input type="submit" value = "Submeter">
+                </form>        
+            </div>
+        </div>
+
+{%endif%}
+</body>

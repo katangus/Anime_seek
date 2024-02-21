@@ -1,0 +1,39 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'anime/style.css' %}" />
+    <title>
+            Anime Seek - Register
+    </title>    
+</head>
+
+<style>
+
+</style>
+
+<body>
+    <div style="width: 100%;">
+        <div class = 'Left' style="width: 50%; height: 100%; float: left;">
+            <figure>
+                    <img src="{% static "anime/images/Logo_anime_seek.png" %}" width="120px" height="80px" align="left">
+            </figure>
+            <br>
+            <br>
+            <br>
+            <br>
+                <div class="center">
+                    <h2>Admin</h2>
+                    <form name="admin" action="{% url 'anime:create_otaku_admin' user%}" method="post">
+                        {% csrf_token %}
+                            <p>Aniversário:</p><input type="date" name="birth">
+                            <br>
+                            <input type="submit" value = "Submit">
+                    </form>
+
+                </div>
+        </div>
+        <div class='Right' style="margin-left: 50%; height: 100%;"> 
+
+        </div>
+    </div>
+    <br>
+</body>

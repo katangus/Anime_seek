@@ -1,0 +1,531 @@
+body{
+    background-color: rgb(35, 38, 47);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+    background-size: 100%;
+    width: 1340px;
+    border: 50px solid rgb(35, 38, 47);
+    margin: 0px;
+    font-family: Tahoma, Geneva, sans-serif
+
+}
+
+/* Default atributos*/
+a{
+    color: #6da4ce;
+}
+p{
+    color: rgb(254, 254, 254);
+}
+
+h3{
+    color: rgb(129, 84, 175);
+}
+
+h1{
+    color: rgb(241, 236, 244)
+}
+h2{
+    color: rgb(129, 84, 175);
+    text-align: center;
+}
+
+h4{
+    color: white;
+}
+h5{
+    color: white;
+    font-size: 16px;
+}
+button{
+    background-color: rgb(129, 84, 175);
+    text-align: center;
+    color: white;
+
+}
+/* -----------Default atributos----------------*/
+
+/*--------- Divide a página em dois ------------- ANIME.HTML*/
+.Right {
+    text-align: center;
+    background-image: url("images/right.jpeg");
+}
+
+.msg{
+    top: 30%;
+    left: 11%;
+    width: 500px;
+    padding: 10px;
+    border: 3px solid rgb(35, 38, 47);
+    background-color: #d1d1cda4;
+    position:relative;
+}
+.msg h2{
+    color:rgb(35, 38, 47);
+}
+.msg p{
+    color:rgb(35, 38, 47);
+}  
+.Left{
+    text-align: center;  
+}
+/*--------------------------------------*/
+/* ---------------Home-----------------------*/
+.Home_r{
+    text-align: center;
+    /*background-image: url("images/right.jpeg")*/
+}
+    
+.Home_l{
+    text-align: center;
+    
+}
+
+.center { /* caixa cinza para por nomes....*/
+    margin: auto;
+    width: 50%;
+    border: 1px solid #3c3c3a;
+    padding: 10px;
+    text-align: center;
+}
+.center img{
+    border-radius: 50%;  
+}
+.box_names p{ /* Caixa roxa à volta do nome*/
+    width: 300px;
+    height: 40px;
+    border: 3px solid rgb(148, 106, 207);
+    text-align: center;
+    font-size: 16px; 
+    background-color: #d1d1cd;
+    color: #9870c1;
+}
+
+.box_names h5{
+    color: white;
+    font-size: 16px;
+}
+.number h3{
+    text-align: center;
+    font-size: 24px;
+}
+
+/* ---------------Acabar Home-----------------------*/
+
+input[type=submit] {
+    /*border: 5px outset rgb(201, 146, 233) */
+    border: 5px purple;
+    color: black;
+    font-weight: bold;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    text-align: center;
+} 
+
+
+
+/* ------------Barra navegação ------------*/
+.active {
+    background-color: #9870c1;}
+
+/* Add a black background color to the top navigation */
+.top_nav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(62, 44, 80);
+}
+
+/* Style the links inside the navigation bar */
+.top_nav li {
+  float: left;
+}
+
+.top_nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+/* Change the color of links on hover */
+.top_nav li a:hover {
+    background-color: rgba(54, 38, 69, 0.892);
+}
+
+/* Add a color to the active/current link */
+.top_nav a.active {
+    background-color: #9870c1;
+    color: white;
+}
+
+/* Right-aligned section inside the top navigation */
+.top_nav_right {
+  float: right;
+}
+/*------------------FIM DA BARRA-----------------------*/
+
+.box{
+    border: 5px solid #6da4ce;
+}
+
+div.gallery {
+    margin: 2px;
+    border: 1px solid #9870c1;
+    width: 329px;
+    float: left;
+    background-color:rgba(56, 26, 64, 0.419);
+    ;
+  }
+  
+div.gallery:hover {
+    border: 1px solid rgb(56, 26, 64);
+  }
+  
+div.gallery img {
+    width: 329px;
+    height: 300px;
+  }
+  
+div.desc{
+    width: 329px;
+    height: 100px;
+    text-align: center;
+}
+
+div.title h5{
+    color:#9870c1;
+    width: 329px;
+    font-size: 14px;
+}
+
+
+div.generos p{
+    color: white;
+    font-size: 12px;
+    width: 329px;
+}
+
+/* --------- Detalhe ------*/
+
+.botao button{
+    background-color: #773899; 
+    border: 1px solid #3c3c3a;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    display:  inline-block;
+    font-size: 16px;
+    margin: 2px;
+    width: 40px;
+    }
+.botao button:active{
+    background-color: rgb(220, 164, 22);
+}
+.top{
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+    text-align: center;
+}
+.top table{
+    background-color:rgba(56, 26, 64, 0.453);
+    border-collapse: collapse;
+    width: 100%;
+}
+.top td {
+    border: 1px solid #3c3c3a;
+    padding: 8px;
+    text-align: center;
+  }
+
+.top th{
+    border: 1px solid #3c3c3a;
+    padding: 8px;
+    text-align: center;
+}
+  
+.Detail_right img{
+    margin: 2px;
+    border: 1px solid #9870c1;
+    width: 600px;
+    background-color:rgba(56, 26, 64, 0.419);
+}
+
+.img_desc{
+    margin: 2px;
+    text-align: center;
+    height: 100px;
+    width: 100%;
+}
+
+.action button{
+    width: 200px;
+    height: 40px;
+    background-color: rgb(220, 164, 22);
+    color: white;
+    font-weight: bolder;
+}
+.action ul{
+    list-style-type: none;
+    margin: 1;
+    padding: 1;
+    width: 200px;
+
+}
+.content{
+    float: right;
+    width: 400px;
+    height: 400px;
+    margin: 5%;
+}
+
+/* --------- Lista de Utilizadores ------*/
+
+.u{
+    display: inline-flex;
+    margin: 2px;
+    float: left;
+    background-color:rgba(56, 26, 64, 0.419);
+    ;
+}
+
+.con{
+    display: inline-flex;
+    margin: 15px;
+    border: 1px solid #9870c1;
+    width: 410px;
+    float: left;
+    background-color:rgb(62, 44, 80);
+    ;
+ 
+}
+
+.sidebox{
+    margin-top: -5px;
+    display:inline-block;
+    padding-top: 15px;
+    width: 250px;
+
+}
+
+/* quadrado mexe quando lhe metes o cursor em cima */
+.con:hover {
+    border: 1px solid rgb(56, 26, 64);
+}  
+
+
+.outline_image{
+    width: 80px;
+    height: 80px;
+    background-color:#9870c1;
+    border-radius: 50%;
+    text-align: center;
+    border: 2px solid  rgba(54, 38, 69, 0.892);
+    display: inline-flex;
+
+}
+
+
+.user_img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+}
+
+
+
+.username_style {
+    font-size: 19px;
+    font-weight:1px;
+    text-align: center;
+    margin-left: 90px;
+    margin-top: 7px;
+    font-family: 'Ope Sans Condensed';
+    color:rgb(0, 0, 0);
+}
+
+.username_style h3 {
+    color: rgb(220, 164, 22);
+}
+
+
+/* --------- Fim da lista de utilizadores ------*/
+
+.content_u{
+    float: right;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+}
+
+.box_names_u p{ /* Caixa roxa à volta do nome*/
+    width: 300px;
+    height: 40px;
+    border: 3px solid rgb(220, 164, 22);
+    text-align: center;
+    font-size: 16px; 
+    background-color: #d1d1cd;
+    color: rgb(145, 114, 36);
+}
+
+.box_names_u h5{
+    color: white;
+    font-size: 16px;
+}
+
+.number_u h3{
+    text-align: center;
+    font-size: 24px;
+    color: rgb(145, 114, 36);
+}
+
+.row {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(54, 38, 69, 0.892)
+}
+  
+.column1 {
+    width: 29%;
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+  
+.column2 {
+    width: 39%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    border-left: 1px solid#9870c1;
+}
+  
+.column3 {
+    width: 29%;
+    height: 100%;
+    float: right;
+    text-align: center;
+    border-left: 1px solid#9870c1;
+}
+
+.column3 ul{
+    color: white;
+}
+.column3 strong{
+    color: #9870c1;
+}
+
+/* ------------------Inicio Adicionar Reviews -----------*/
+
+.leftpane {
+    width: 25%;
+    position: relative;
+    float: left;
+    background-color: rgb(35, 38, 47);
+    border-collapse: collapse;
+    margin:15px;
+}
+
+.leftpane_upper {
+    height: 663px;
+    text-align: center;
+    background-color: rgb(35, 38, 47);
+    border-collapse: collapse;
+    margin: 20px;
+
+}
+
+.rightpane {
+    width: 70%;
+    position: relative;
+    float: right;
+    background-color:rgb(35, 38, 47);
+    border-collapse: collapse;
+    margin: 16px;
+    
+  }
+
+
+.outline_image{
+    width: 70px;
+    height: 70px;
+    background-color:#9870c1;
+    border-radius: 50%;
+    text-align: center;
+    border: 2px solid   rgba(54, 38, 69, 0.892);
+    display: flex;
+    position:absolute;
+
+
+}
+
+.u2{
+    width: 100%;
+    margin: 2px;
+    float: left;
+    display: flex;
+}
+
+/* caixa do comentario */
+.con2{
+    height: 74px;
+    margin: 15px;
+    width: 900px;
+    float: left;
+    background-color: rgb(145, 114, 36);
+    font-size: 16px; 
+    display:flex;
+    overflow: auto;
+}
+
+
+.username_style2 {
+    width: 100%;
+    flex-direction: column;
+    margin-top:10px ;
+    margin-right:50px;
+    font-size: 14px;
+    height: 5px;
+    color: rgb(42, 22, 2);
+    display: flex;
+}
+
+.username_style2 span{
+    width: 100%;
+    flex-direction: column;
+    margin-top:-5px ;
+    margin-right:50px;
+    font-size: 14px;
+    height: 5px;
+    color: rgb(249, 246, 244);
+    display: flex;
+
+}
+
+.username_style2 p{
+    width: 100%;
+    flex-direction: column;
+    margin-top:35px ;
+    margin-right:50px;
+    font-size: 15px;
+    height: 5px;
+    color: rgb(42, 22, 2);
+    display: flex;
+
+}
+.texto {  
+
+    flex-direction: column;
+    margin-left: 80px;
+    font-size: 12px;
+    height: 5px;
+    color: rgb(42, 22, 2);
+    display: flex;
+}
+  

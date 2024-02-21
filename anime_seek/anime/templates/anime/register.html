@@ -1,0 +1,50 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'anime/style.css' %}" />
+    <title>
+            Anime Seek - Register
+    </title>    
+</head>
+
+<style>
+
+</style>
+
+<body>
+    <div style="width: 100%;">
+        <div class = 'Left' style="width: 50%; height: 100%; float: left;">
+            <figure>
+                    <img src="{% static "anime/images/Logo_anime_seek.png" %}" width="120px" height="80px" align="left">
+            </figure>
+            <br>
+            <br>
+            <br>
+            <br>
+                <div class="center">
+                    <h1> Junta-te à comunidade! </h1>
+                        <h2>Registo</h2>
+                        <form name="user" action="{% url 'anime:register' %}" method="post">
+                        {% csrf_token %}
+                            <p>Username:</p><input type="text" name="username">
+                            <p>E-mail:</p><input type="email" name="e-mail">
+                            <p>Password:</p><input type="password" name="password">
+                            <p>Aniversário:</p><input type="date" name="birthdate">
+                            <br>
+                            <input type="submit" value = "Registar">
+                        </form>
+                </div>
+        </div>
+        <div class='Right' style="margin-left: 50%; height: 100%;"> 
+            <div class="msg">
+                <h2>Junta-te à comunidade!</h2>
+                <p>Adiciona os teus animes à tua lista.<br>
+                Conecta-te com outros utilizadores. <br>
+                Deixa uma review dos animes que já viste <br>
+                para ajudar outros utilizadores.<br></p>
+                <h2> Diverte-te</h2>                
+            </div>
+
+        </div>
+    </div>
+    <br>
+</body>

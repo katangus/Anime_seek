@@ -1,0 +1,94 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'anime/style.css' %}" />
+  <title> Profile </title>
+</head>
+<style>
+
+</style>
+<body>
+    {% if user.is_authenticated %}
+            <img src="{% static 'anime/images/Logo_anime_seek.png' %}" width="120px" height="80px" align="left">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            <div class="top_nav">
+                <ul>
+                    <li><a href="{% url 'anime:home' user.id %}"> Home </a></li>
+                    <li><a href="{% url 'anime:data' user.id %}">Animes</a></li>
+                    <li><a href="{% url 'anime:utilizadores' user.id %}">Otakus</a></li>
+                    <li><a href="{% url 'anime:amigos' user.id %}">A seguir</a></li>
+                    <li><a href="{% url 'anime:my_list' user.id %}">A minha lista</a></li>
+                  <div class="top_nav_right">
+                      <li><a href="{% url "anime:logoutview" %}">  Logout  </a></li>
+                  </div>
+                </ul>
+            </div>
+            <br>
+            <br>
+        {% if following %}  
+            <div style="width: 1O0%;">
+                <div class = 'User_l' style="width: 50%; height: 100%; float: left;"> 
+                  <center>
+                      <div class="box_names_u">
+                        <h5>Username</h5> 
+                          <p>{{ following.username }}</p>
+                        <h5>Email</h5>
+                          <p>{{ following.email }}</p>
+                        <h5>Last Login</h5> 
+                          <p>{{ following.last_login}}</p>
+                        <h5>Friends</h5>
+                        <div class="number_u">
+                            <h3>{{friends}}</h3>
+                        </div>
+                        <h5>Animes</h5>
+                        <div class="number_u">
+                          <h3>{{animes}}</h3>
+                        </div>  
+                      </div>   
+                  </center>              
+                </div>
+                <div class='User_r' style="margin-left: 50%; height: 100%;">
+                  <center>
+                    {% if following.otaku.path_image == "" %}
+                    <div class="center">
+                      <img src="{% static 'anime/images/default.jpg' %}" alt ="Profile Image" width='300px' height="300px">
+                    </div>
+                    {% else %}
+                    <div class="center">
+                      <img src="/anime/static/media/{{following.id}}.jpg" alt ="Profile Image" width='300px' height="300px">
+                    </div>
+                    {% endif %} 
+                  <div class="action">
+                    <ul>
+                      <li>
+                        <form action="{% url "anime:add_user" user.id following.id %}" method='POST'>
+                          {% csrf_token %}
+                          <button type='submit'>Seguir utilizador</button>
+                        </form>
+                      </li>
+                      <li>
+                        <form action="{% url "anime:delete_user_from_list" user.id following.id %}" method='POST'>
+                            {% csrf_token %}
+                            <button type='submit'>Deixar de seguir utilizador</button>
+                        </form>
+                      </li>
+                        {%if request.user.is_superuser%}
+                            <li>
+                                <form action="{% url "anime:admin_delete_user" user.id following.id %}" method='POST'>
+                                    {% csrf_token %}
+                                    <button type='submit'>Remover utilizador da base de dados</button>
+                                </form>
+                            </li>
+                        {%endif%}
+                    </ul>
+                  </div>
+                  </center>
+                </div>
+            </div>
+        {%endif%}
+      {%endif%}
+    
+</body>

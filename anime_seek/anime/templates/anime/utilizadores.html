@@ -1,0 +1,53 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'anime/style.css' %}" />
+  <title> User List </title>
+</head>
+<style>
+
+</style>
+<body>
+        <img src="{% static 'anime/images/Logo_anime_seek.png' %}" width="120px" height="80px" align="left">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      <div class="top_nav">
+        <ul>
+          <li><a href="{% url 'anime:home' user %}"> Home </a></li>
+          <li><a href="{% url 'anime:data' user %}">Animes</a></li>
+          <li><a class="active" href="{% url 'anime:utilizadores' user %}">Otakus</a></li>
+          <li><a href="{% url 'anime:amigos' user %}">A seguir</a></li>
+          <li><a href="{% url 'anime:my_list' user %}">A minha lista</a></li>
+          <div class="top_nav_right">
+            <li><a href="{% url 'anime:logoutview' %}">  Logout  </a></li>
+          </div>
+        </ul>
+      </div>
+      <br>
+      {% if user %}
+        {% for u in utilizadores %}   
+          <div class="u">
+            <a href="{% url 'anime:user' user u.id %}">
+              <div class="con">     
+                  <div class="outline_image">
+                      {% if u.otaku.path_image == "" %}
+                        <img src="{% static 'anime/images/default.jpg' %}"  class="user_img">
+                      {% else %}
+                        <img src="/anime/static/media/{{u.id}}.jpg"  class="user_img">
+                      {% endif %}
+                  </div> 
+                  
+                  <div class="username_style">
+                    <h3>
+                      {{u.username}}
+                    </h3>
+                  </div>
+
+              </div>  
+            </a>
+          </div>
+          {%endfor%}
+      {%endif%}
+</body> 

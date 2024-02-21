@@ -1,0 +1,47 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'anime/style.css' %}" />
+    <title>
+        {% block title %} Anime Seek
+        {% endblock %}
+    </title>    
+</head>
+<body>
+    <img src="{% static "anime/images/Logo_anime_seek.png" %}" width="120px" height="80px" align="left">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="top_nav">
+                <ul>
+                <li><a href="{% url "anime:home" user.id %}"> Home </a></li>
+                <li><a href="{% url "anime:data" user.id %}">Animes</a></li>
+                <li><a href="{% url "anime:utilizadores" user.id %}">Otakus</a></li>
+                <li><a href="{% url "anime:amigos" user.id %}">A seguir</a></li>
+                <li><a href="{% url "anime:my_list" user.id %}">A minha lista</a></li>
+                <div class="top_nav_right">
+                    <li><a href="{% url "anime:logoutview" %}">  Logout  </a></li>
+                </div>
+                </ul>
+            </div>
+            <br>
+    <center>
+        <h2>Olá {{ user.username }}. Para uma melhor experiência personaliza o teu perfil</h2>
+                <figure>
+                    {% if user.otaku.path_image == "" %}
+                        <img src="{% static 'anime/images/default.jpg' %}" alt ="Profile Image" width='140' height="140" >
+                    {% else %}
+                        <img src="/static/media/{{request.user.id}}.jpg" alt ="Profile Image" width='140' height="140">
+                    {% endif %}  
+                </figure>
+
+            <h4>Adiciona uma foto de perfil</h4>
+            <form method="post" enctype="multipart/form-data"
+                action="{% url 'anime:personalizar' ide %}">
+                {% csrf_token %}
+                <input type="file" name="myfile">
+                <input type="submit" value="Upload">
+            </form>
+    </center>
+</body>

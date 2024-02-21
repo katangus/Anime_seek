@@ -1,0 +1,40 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'anime/style.css' %}" />
+  <title> Error </title>
+</head>
+<style>
+
+</style>  
+<body>
+  {% if request.user.is_authenticated %}
+  <img src="{% static "anime/images/Logo_anime_seek.png" %}" width="120px" height="80px" align="left">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+<div class="top_nav">
+  <ul>
+    <li><a href="{% url "anime:home" user.id %}"> Home </a></li>
+    <li><a href="{% url "anime:data" user.id %}">Animes</a></li>
+    <li><a href="{% url "anime:utilizadores" user.id %}">Otakus</a></li>
+    <li><a href="{% url "anime:amigos" user.id %}">A seguir</a></li>
+    <li><a href="{% url "anime:my_list" user.id %}">A minha lista</a></li>
+    <div class="top_nav_right">
+      <li><a href="{% url "anime:logoutview" %}">  Logout  </a></li>
+    </div>
+  </ul>
+</div>
+  {%if add_me%}
+    <p> Não te podes seguir a ti mesmo ;) </p>
+    
+  {%endif%}
+  {% if not_add_anime%}
+    <p> O anime que pretendes remover não se encontra na tua lista </p>
+  {%endif%}
+  {%if not_add_user%}
+  <p> Não segues este utilizador</p>
+  {%endif%}
+  {%endif%}
+</body>

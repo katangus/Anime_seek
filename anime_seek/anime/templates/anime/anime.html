@@ -1,0 +1,56 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'anime/style.css' %}" />
+    <title>
+        {% block title %} 
+            Anime Seek
+        {% endblock %}
+    </title>    
+</head>
+
+<style>
+
+</style>
+
+<body>
+    <div style="width: 100%;">
+        <div class = 'Left' style="width: 50%; height: 100%; float: left;">
+            <figure>
+                    <img src="{% static "anime/images/Logo_anime_seek.png" %}" width="120px" height="80px" align="left">
+            </figure>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+                <div class="center">
+                    <h1> Bem Vindo! </h1>
+
+                    <h2>Login</h2> 
+                    <form name="login" action="{% url 'anime:loginview' %}" method="post">
+                        {% csrf_token %}
+                            <p>Username:</p><input type="text" name="user">
+                            <p>Password:</p><input type="password" name="password">
+                            <br>
+                            <br>
+                            <input type="submit" value="Login">
+                    </form>
+                    <p> Não tens conta? <a href="{% url 'anime:register' %}">Regista-te</a></p>
+                </div>
+        </div>
+        <div class='Right' style="margin-left: 50%; height: 100%;"> 
+            <div class="msg">
+                <h2>Junta-te à comunidade!</h2>
+                <p>Adiciona os teus animes à tua lista.<br>
+                Conecta-te com outros utilizadores. <br>
+                Deixa uma review dos animes que já viste <br>
+                para ajudar outros utilizadores. <br></p>
+                <h2> Diverte-te</h2>                
+            </div>
+
+        </div>
+    </div>
+    <footer>
+        <p align="center">Contactos: cdboe@iscte-iul.pt nº98521 | badcp@iscte-iul.pt nº98484</p>
+    </footer>
+</body>

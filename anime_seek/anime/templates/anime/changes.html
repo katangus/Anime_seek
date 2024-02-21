@@ -1,0 +1,25 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'anime/style.css' %}" />
+  <title> Alterar </title>
+</head>
+<style>
+
+</style>
+<body>
+    <center>
+        <h1> Alterar username </h1>
+            <form name="alterar_username" action="{% url 'anime:alterar_username' user %}" method="post">
+                {% csrf_token %}
+                <p>Novo username:</p><input type="text" name="newusername">
+                <br>
+                <br>
+                <input type="submit" value="Alterar">
+            </form>
+
+            <a href="{% url 'anime:home' user %}">
+                Ir a home
+            </a>
+    </center>
++
+</body>

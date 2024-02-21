@@ -1,0 +1,102 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'anime/style.css' %}" />
+  <title> HOME </title>
+</head>
+<style>
+
+</style>
+<body>
+  {% if request.user.is_authenticated %}
+      <img src="{% static "anime/images/Logo_anime_seek.png" %}" width="120px" height="80px" align="left">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    <div class="top_nav">
+      <ul>
+        <li><a class="active" href="{% url "anime:home" user %}"> Home </a></li>
+        <li><a href="{% url "anime:data" user %}">Animes</a></li>
+        <li><a href="{% url "anime:utilizadores" user %}">Otakus</a></li>
+        <li><a href="{% url "anime:amigos" user %}">A seguir</a></li>
+        <li><a href="{% url "anime:my_list" user %}">A minha lista</a></li>
+        <div class="top_nav_right">
+          <li><a href="{% url "anime:logoutview" %}">  Logout  </a></li>
+        </div>
+      </ul>
+    </div>
+      <div style="width: 1O0%;">
+        <div class = 'Home_l' style="width: 50%; height: 100%; float: left;"> 
+            <h2>Olá {{ request.user.username }} ! </h2> 
+            <div class="center">
+              {% if otaku.path_image == "" %}
+                <img src="{% static 'anime/images/default.jpg' %}" alt ="Profile Image" width='140' height="140">
+              {% else %}
+                <img src="/anime/static/media/{{request.user.id}}.jpg" alt ="Profile Image" width='140' height="140">
+              {% endif %}
+                <br>  
+                  <a href="{% url 'anime:personalizar' user %}"> Alterar imagem </a>
+                <br>
+              <div class="box_names">
+                <h5>Username</h5> 
+                  <p>{{ request.user.username }}</p>
+                  <a href="{% url 'anime:alterar_username' user %}"> Alterar username </a>
+                <h5>Email</h5>
+                  <p>{{ request.user.email }}</p>
+                <h5>Último login</h5> 
+                  <p>{{ request.user.last_login}}</p>
+                <h5>A seguir</h5>
+                  <div class="number">
+                    <h3>{{friends}}</h3>
+                  </div>
+                <h5>Animes</h5>
+                <div class="number">
+                  <h3>{{animes}}</h3>
+                </div>
+              </div>
+          </div> 
+        </div>
+        <div class='Home_r' style="margin-left: 50%; height: 100%;"> 
+          <br>
+          {%if request.user.is_superuser%}
+            <div class="button">
+              <h4> Fazer alterações à base de Dados: </h4>
+              <a href="{% url "anime:admin" user%}"> <button> + </button> </a>
+            </div>
+          {%endif%}
+
+          <br>
+          <br>
+          <div class="top">
+              <table>
+                <tr>
+                  <th colspan="2"><h3>Top 3 Animes</h3></th>
+                  </tr>
+                <tr>
+                  <td>
+                    <h4>Imagem</h4>
+                  </td>
+                  <td>
+                    <h4>Anime</h4>
+                  </td>
+                </tr>
+                {%for i in top%}
+                <tr>
+                  <td> 
+                    <a href="{% url 'anime:detail' i.id user%}">
+                      <img src="{{i.logo}}" alt="logo" width='140' height="140">
+                    </a>
+                  </td>
+                  <td>
+                    <h3>{{i.anime}}</h3> 
+                    <p>{{i.generos}}</p>
+                  </td>
+                </tr>
+                {%endfor%}
+              </table>
+          </div>
+        </div>
+
+{%endif%}
+</body>

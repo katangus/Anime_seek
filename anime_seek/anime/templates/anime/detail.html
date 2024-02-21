@@ -1,0 +1,87 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'anime/style.css' %}" />
+  <title> Detail </title>
+</head>
+<style>
+
+</style>
+<body>
+{% if request.user.is_authenticated %}
+        <img src="{% static "anime/images/Logo_anime_seek.png" %}" width="120px" height="80px" align="left">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    <div class="top_nav">
+        <ul>
+            <li><a href="{% url "anime:home" user.id %}"> Home </a></li>
+            <li><a href="{% url "anime:data" user.id %}">Animes</a></li>
+            <li><a href="{% url "anime:utilizadores" user.id %}">Otakus</a></li>
+            <li><a href="{% url "anime:amigos" user.id %}">A seguir</a></li>
+            <li><a href="{% url "anime:my_list" user.id %}">A minha lista</a></li>
+
+            <div class="top_nav_right">
+                <li><a class="active" href="{% url "anime:detail" a.id user.id %}">{{a.anime}}</a></li>
+                <li><a href="{% url "anime:todas_reviews" a.id user.id %}">Reviews</a></li>
+                <li><a href="{% url "anime:logoutview" %}">  Logout  </a></li>
+            </div>
+        </ul>
+    </div>
+    <br>
+    <br>
+    {% if a %}
+    <div class="row">
+        <div class="column1"> 
+        <center>
+        <div class="action">
+            <ul>
+                <li>
+                    <form action="{% url "anime:add_to_list" a.id user.id %}" method='POST'>
+                        {% csrf_token %}
+                        <button type='submit'>Adicionar à minha lista de animes</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="{% url "anime:delete_anime_from_list" a.id user.id %}" method='POST'>
+                        {% csrf_token %}
+                        <button type='submit'>Remover da minha lista de animes</button>
+                    </form>
+                </li>
+                {%if request.user.is_superuser%}
+                <li>
+                    <form action="{% url "anime:admin_delete_anime" a.id user.id %}" method='POST'>
+                        {% csrf_token %}
+                        <button type='submit'>Remover anime da base de dados</button>
+                    </form>
+                </li>
+                {%endif%}
+            </ul>
+        </div>
+    </center>
+        </div>
+        <div class="column2">
+            <div class="content">
+                <h4>Título</h4>
+                <h2> {{a.anime}} </h2>
+                <h4>Géneros</h4>
+                <p> {{a.generos}} </p>
+                <h4>Episódios</h4>
+                <div class="botao">
+                    {% for e in loop %}
+                    <button>{{e}}</button>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class='column3'>
+            <img src="{{a.logo}}" width="70%px" height="70%">
+            <div class="img_desc">
+                <p>Imagem proveniente de <a href="https://myanimelist.net">Myanimelist</a></p>
+            </div>
+        </div>
+    </div>
+    {%endif%}
+{%endif%}
+</body>
